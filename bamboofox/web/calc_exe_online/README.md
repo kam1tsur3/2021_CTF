@@ -4,7 +4,8 @@ This is first time to make a writeup for web challenges :3
 
 ## Challenge
 Here is a part of the source code.  
-```
+
+```php
 <?php
 error_reporting(0);
 isset($_GET['source']) && die(highlight_file(__FILE__));
@@ -75,6 +76,7 @@ function safe_eval($code)
 ...
 ...
 ```
+
 It is a simple php challenge.
 We want to pass good string to eval() in safe\_eval().  
 
