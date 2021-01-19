@@ -6,9 +6,9 @@
 I solved the following challenges.
 
 * Flag Checker (rev) 50pt
-	* [writeup](https://github.com/kam1tsur3/2021_CTF/blob/master/bamboofox/rev/rev/README.md)
+	* [writeup](https://github.com/kam1tsur3/2021_CTF/blob/master/bamboofox/rev/flag_checker/README.md)
 * Calc.exe Online (web) 50pt
-	* [writeup](https://github.com/kam1tsur3/2021_CTF/blob/master/bamboofox/web/web/README.md)
+	* [writeup](https://github.com/kam1tsur3/2021_CTF/blob/master/bamboofox/web/calc_exe_online/README.md)
 * Babystack (pwn) 421pt
 	* [writeup](https://github.com/kam1tsur3/2021_CTF/blob/master/bamboofox/pwn/babystack/README.md)
 
