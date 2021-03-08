@@ -21,20 +21,20 @@ And we can also write 4 bytes at chunk\[offset\] only once (offset is given by u
 Do we really allocate and write only once???
 ### Exploit 
 Return value of calloc() is not checked. It is vulnerable.  
-In addition, offset given by user input is not check too. It is alos vulnerable.  
+In addition, offset given by user input is not check too. It is also vulnerable.  
 
 If we give calloc() "-1", calloc() returns 0.  
 So we can overwrite got area because PIE is disable.  
 
 My exploit step is ...
 
-* make infinite loop
+* make infinite loop  
 Overwriting got_puts to the address of main.  
 
-* enable allocate chunks larger than limitation(> 4\*0x100) 
+* enable allocate chunks larger than limitation(> 4\*0x100)   
 Overwriting got\_exit to the address of some gadget(only execute "ret;")
 
-* libc leak
+* libc leak  
 If we allocate some extra large chunks (For example 0x22000), chunks are always located just before the address of libc.  
 By using this malloc(calloc) feature, we can also AAW for libc.  
 
@@ -49,7 +49,7 @@ and call setup() (printf(stdout) was executed).
 0x7ffff7fb76e0 <_IO_2_1_stdout_+64>:    0x00007ffff7fb7724      0x0000000000000000
 ```
 
-* one gadget rce
+* one gadget rce  
 Distributed libc has following one gadge RCE.
 ```
 0xe6e79 execve("/bin/sh", rsi, rdx)

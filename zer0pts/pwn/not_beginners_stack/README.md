@@ -83,7 +83,7 @@ vuln:
 ```
 read() is called at 2 times.  
 First read() in vuln() can overwrite old\_rbp stored on stack.  
-Second read() in notvuln() can trigger AAW because read buffer is based rbp value.  
+Second read() in notvuln() can trigger AAW because read buffer is based on rbp value.  
 I overwrote \_\_stack\_shadow to control RIP.
 
 I didn't notice that we could execute shellcode :(   
