@@ -14,7 +14,7 @@ Result of file command
 Result of checksec
 * RELRO  : No RELRO (No library)
 * Canary : Disable
-* NX     : Enable
+* NX     : Disable
 * PIE    : Disable
 
 In this challenge,  "call" and "ret" instruction is not used.  
