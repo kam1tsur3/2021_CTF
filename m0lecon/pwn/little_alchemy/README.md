@@ -45,10 +45,11 @@ I'll use this to show how to exploit.
 
 Let's begin.  
 
-* leak addresses 
+#### leak addresses   
+
 We want some kind of chunks to get addresses of memory.   
 
-1. chunks not freed for leaking address of binary
+1. chunks not freed for leaking address of binary  
 In this binary, an address of .data section is stored at the top of allocated chunks([chunk+0x0]). And editable string is stored which begin at [chunk+0x18].  
 So, we make two chunks in contiguous location, and trigger overflow with edit command against the former chunk. We can get the address of .data secion with show command.  
 One thing to keep in mind, edit command can trigger overflow, but it ends with null byte.  
@@ -76,11 +77,11 @@ In my exploit, this part is relevant.
 	first_chunk = u64(heap_base+b'\x00'*(8-len(heap_base))) - 0x6d110 + 0x6cea0
 ...
 ```
-2. chunks linked to tacahe for leaking address of heap
+2. chunks linked to tacahe for leaking address of heap  
 Same as the previous example, we can get the address of heap.  
 We only have to link the letter chunk of two chunks in contiguous location.  
 
-3. chunks linked to unsorted bin for leaking address of libc
+3. chunks linked to unsorted bin for leaking address of libc  
 To get this one, we allocate enough size of memory avoiding freed chunks are reused.  
 
 In my exploit, this part is relevant.
@@ -123,7 +124,7 @@ Same as 1 & 2, we can get the address of libc with show command.
 We are not distributed libc file, so I guess the version of libc from unsorted bin address. 
 But actually I think it is bad approach.
 
-* tcache poisoning 
+#### tcache poisoning 
 We have the address of binary, heap and libc.  
 So Let's start exploit.  
 In this time, we can't use _free_hook and  one_gadget RCE to get a shell, So I used FSOP exploit.  
@@ -156,13 +157,13 @@ In my exploit, this part is
 ...
 ```
 
-* FSOP
+#### FSOP
 If you don't know FSOP well, I think [this site](https://www.slideshare.net/AngelBoy1/play-with-file-structure-yet-another-binary-exploit-technique) is helpful(and [another](https://www.slideshare.net/AngelBoy1/play-with-file-structure-yet-another-binary-exploit-technique)).  
 Not to make program failed, we have to satisfy some condition.
-* vtable check
+* vtable check  
 fp->vtable must be in _IO_vtables section.  
 So we set fake_fp->vtable = (_IO_file_jumps-0x10), and [_IO_file_jumps+0x8] = libc_system(because the offset of io_overflow in vtable is 0x18).
-* call _IO_OVERFLOW
+* call _IO_OVERFLOW  
 1. fp->_mode <= 0
 2. fp->_IO_write_ptr > fp->_IO_write_base
 
