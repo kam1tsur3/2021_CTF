@@ -1,0 +1,9 @@
+#!/bin/sh
+# Tips: Temporarily remove S40network and S41dhcpcd for faster boot
+#       when you test your exploit locally.
+echo "Welcome to CakeCTF 2021"
+echo 0 > /proc/sys/kernel/dmesg_restrict
+echo 0 > /proc/sys/kernel/kptr_restrict
+#setsid cttyhack setuidgid 1337 sh
+setsid cttyhack setuidgid 0 sh
+halt -d 1 -n -f
