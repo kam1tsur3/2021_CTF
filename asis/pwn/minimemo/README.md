@@ -194,7 +194,7 @@ int main(){
 }
 ```
 
-My exploit code is [k\_exp.py](https://github.com/kam1tsur3/2021_CTF/blob/master/asis/pwn/minimemo/exploit/k_exp.c).
+My exploit code is [k\_exp.c](https://github.com/kam1tsur3/2021_CTF/blob/master/asis/pwn/minimemo/exploit/k_exp.c).
 
 ## Reference
 
