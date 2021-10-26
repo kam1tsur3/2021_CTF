@@ -1,0 +1,26 @@
+#!/bin/sh
+# Setup
+mdev -s
+mount -t proc none /proc
+mkdir -p /dev/pts
+mount -vt devpts -o gid=4,mode=620 none /dev/pts
+chmod 666 /dev/ptmx
+stty -opost
+#echo 2 > /proc/sys/kernel/kptr_restrict
+#echo 1 > /proc/sys/kernel/dmesg_restrict
+echo 0 > /proc/sys/kernel/kptr_restrict
+echo 0 > /proc/sys/kernel/dmesg_restrict
+
+# Install sknote
+insmod /root/minimemo.ko
+mknod -m 666 /dev/memo c `grep memo /proc/devices | awk '{print $1;}'` 0
+
+# User shell
+echo -e "\nBoot took $(cut -d' ' -f1 /proc/uptime) seconds\n"
+echo "[ minimemo - ASIS CTF 2021 ]"
+#setsid cttyhack setuidgid 1337 sh
+setsid cttyhack setuidgid 0 sh
+
+# Cleanup
+umount /proc
+poweroff -d 0 -f
