@@ -35,7 +35,7 @@ And we also free the address of tcache\_perthread\_struct.  As a result "count" 
 So now we can exploit with tcache poisoning attack.  
 
 A part of exploit
-```
+```python
 def get(idx):
 	conn.sendlineafter("> ", "1")
 	conn.sendlineafter(" = ", str(idx))
