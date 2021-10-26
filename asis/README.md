@@ -6,7 +6,7 @@
 I solved the following challenges.
 
 * Just pwn it (pwn) 106solves 51pt
-	* [writeup](https://github.com/kam1tsur3/2021_CTF/blob/master/asis/pwn/justpwnit/README.md)
+	* [writeup](https://github.com/kam1tsur3/2021_CTF/blob/master/asis/pwn/just_pwn_it/README.md)
 * ABBR (pwn) 68solves 71pt
 	* [writeup](https://github.com/kam1tsur3/2021_CTF/blob/master/asis/pwn/abbr.d/README.md)
 * StrVec (pwn) 38solves 114pt
