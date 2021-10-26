@@ -30,7 +30,7 @@ But we cannot get the kernel base address.
 
 See around the kernel module address, there are some addresses which based on the kernel base address.  
 * memory dump around global variable top(kernel module address = 0xffffffffc006b000)
-``
+```
 wndbg> x/20gx 0xffffffffc006b000+0x2100
 0xffffffffc006d100:     0x0000000000000000      0x0000000000000000
 0xffffffffc006d110:     0x0000000000000000      0xffffffffc006d100  <- top.fd
